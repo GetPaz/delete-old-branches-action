@@ -40,7 +40,7 @@ branch_protected() {
 
     protected=$(curl -X GET -s -H "Authorization: Bearer ${GITHUB_TOKEN}" \
         "${BASE_URI}/repos/${REPO}/branches/${br}" | jq -r .protected)
-
+    echo "token ${GITHUB_TOKEN} base uri ${BASE_URI} repo ${REPO} branch ${br}"
     # If we got null then something else happened (like no access error etc) so
     # we can't determine the status for the branch
     case ${protected} in
